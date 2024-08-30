@@ -10,10 +10,10 @@ class FlowLog:
         self.attributes = attributes
 
     @staticmethod
-    def from_list(flow_log_list: List[str], field_mapping: FieldMapping) -> 'FlowLog':
+    def from_list(flow_log_data_list: List[str], field_mapping: FieldMapping) -> 'FlowLog':
         """
         Parses a flow log string based on a field mapping and returns a FlowLog object.
-        :param flow_log_list: The log data list to parse.
+        :param flow_log_data_list: The log data list to parse.
         :param field_mapping: A FieldMapping object defining which fields to extract.
         :return: A FlowLog object with dynamically assigned attributes.
         """
@@ -21,13 +21,13 @@ class FlowLog:
 
         for key in field_mapping.mapping.keys():
             index = field_mapping.get_field_index(key)
-            if index is not None and index < len(flow_log_list):
+            if index is not None and index < len(flow_log_data_list):
 
                 # TODO: Better logic/strategy to do this type casting
-                if flow_log_list[index].isdigit():
-                    attributes[key] = int(flow_log_list[index])
+                if flow_log_data_list[index].isdigit():
+                    attributes[key] = int(flow_log_data_list[index])
                 else:
-                    attributes[key] = flow_log_list[index]
+                    attributes[key] = flow_log_data_list[index]
 
         return FlowLog(attributes)
 

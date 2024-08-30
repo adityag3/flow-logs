@@ -13,15 +13,17 @@ from config import Config
 def main():
     print("Execution Started!")
 
-    fields_mapping = Config.FIELDS_MAPPING
+    flow_log_fields_mapping = Config.FLOW_LOG_FIELDS_MAPPING
+    flow_log_tags_fields_mapping = Config.FLOW_LOG_TAGS_FIELDS_MAPPING
 
-    logs = FileHandler.read_file(Config.FLOW_LOG_TEXT_FILE)
+    logs = FileHandler.read_file(Config.FLOW_LOG_TEXT_FILE, seperator=" ")
 
-    flow_log_parser = FlowLogParser(FieldMapping(fields_mapping))
+    flow_log_parser = FlowLogParser(FieldMapping(flow_log_fields_mapping))
     flow_log_parser.parse_logs(logs)
 
-    lookup_table = CSVHandler.read_file(Config.LOOKUP_TABLE_FILE)
-    flow_log_tags = FlowLogTags.load_from_data(lookup_table)
+    lookup_table = FileHandler.read_file(Config.LOOKUP_TABLE_FILE, seperator=",")
+
+    flow_log_tags = FlowLogTags.load_from_data(lookup_table, FieldMapping(flow_log_tags_fields_mapping))
 
     port_protocol_mapping = PortProtocolMapping(Config.PORT_PROTOCOL_MAPPING)
 

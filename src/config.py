@@ -2,7 +2,7 @@ class Config:
     """A class to store configuration settings as class attributes."""
 
     # Define configuration settings as class attributes
-    FIELDS_MAPPING = {
+    FLOW_LOG_FIELDS_MAPPING = {
             "version": 0,
             "account-id": 1,
             "interface-id": 2,
@@ -18,6 +18,12 @@ class Config:
             "action": 12,
             "log-status": 13
         }
+
+    FLOW_LOG_TAGS_FIELDS_MAPPING = {
+            "dstport": 0,
+            "protocol": 1,
+            "tag": 2
+    }
 
     PORT_PROTOCOL_MAPPING = {
             0: "HOPOPT",
@@ -174,4 +180,4 @@ class Config:
     TAG_AGGREGATION_FILE = "../data/tag.csv"
     PORT_PROTOCOL_AGGREGATION_FILE = "../data/port-protocol.csv"
     FLOW_LOG_TEXT_FILE = "../data/flow-logs.txt"
-    LOOKUP_TABLE_FILE = "../data/lookup-table.csv"
+    LOOKUP_TABLE_FILE = "../data/lookup-table.txt"

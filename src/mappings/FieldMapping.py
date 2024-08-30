@@ -1,3 +1,6 @@
+from typing import List
+
+
 class FieldMapping:
     def __init__(self, mapping: dict):
         """
@@ -13,6 +16,13 @@ class FieldMapping:
         :return: The index of the field.
         """
         return self.mapping.get(field_name, None)
+
+    def get_keys(self) -> List[str]:
+        """
+        Returns the index of the field in the log string.
+        :return: List of keys
+        """
+        return list(self.mapping.keys())
 
     def __repr__(self):
         return f"FieldMapping({self.mapping})"

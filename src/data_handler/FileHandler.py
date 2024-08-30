@@ -5,18 +5,21 @@ class FileHandler:
     """A class to handle reading from and writing to text files."""
 
     @staticmethod
-    def read_file(file_path: str) -> List[str]:
+    def read_file(file_path: str, seperator: str = None) -> List[str]:
         """
-        Reads a CSV file and returns its contents as a list of dictionaries.
-
-        :param file_path: Path to the CSV file.
+        Reads a Text file and returns its contents as a list of dictionaries.
+        :param seperator:
+        :param file_path: Path to the Text file.
         :return: List of Strings representing the rows in file.
         """
         data = []
         try:
             with open(file_path, 'r') as file:
                 for line in file:
-                    data.append(line.strip())
+                    line = line.strip()
+                    if seperator:
+                        line = line.split(seperator)
+                    data.append(line)
         except FileNotFoundError:
             print(f"File not found: {file_path}")
         except Exception as e:
