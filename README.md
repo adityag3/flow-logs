@@ -30,10 +30,12 @@ Quick working solution for the given problem statement by Illumino. Avoiding add
 - Required fields would always be present in flow logs.
 - There cannot be case in-consistency in the logs.
 - The protocol number is always valid and thus present in mapping.
+- Individual output files for each aggregation and CSV file is allowed. Probably a text file would have been more uniform but due to lack of time I am skipping it.  
 
 ## Future Work
 - Implement Interfaces and base classes to make code more extensible. For example, `FlowLogParser` should have an abstract class and current implementation will extend it and implement parse log function. 
 - Type casting FlowLog elements using a config. Perhaps, improve the Field Mapper to have more information about the field itself. 
+- Better logic and flow for returning the aggregated data and saving their concerned files. 
 - Better Exception handling and logging. 
 - Add unit & functional tests.
 
