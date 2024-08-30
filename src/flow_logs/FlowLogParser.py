@@ -12,12 +12,12 @@ class FlowLogParser:
         self.field_mapping = field_mapping
         self.flow_logs = []
 
-    def parse_logs(self, log_strings: List[List[str]]) -> None:
+    def parse_logs(self, log_data_list: List[List[str]]) -> None:
         """
         Parses a list of log strings and generates FlowLog objects.
-        :param log_strings: A list of log strings to parse.
+        :param log_data_list: A list of log data.
         """
-        self.flow_logs = [FlowLog.from_list(log_data, self.field_mapping) for log_data in log_strings]
+        self.flow_logs = [FlowLog.from_list(log_data, self.field_mapping) for log_data in log_data_list]
 
     def get_flow_logs(self) -> List[FlowLog]:
         """
