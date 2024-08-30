@@ -17,7 +17,7 @@ class FlowLogParser:
         Parses a list of log strings and generates FlowLog objects.
         :param log_strings: A list of log strings to parse.
         """
-        self.flow_logs = [FlowLog.from_string(log_string, self.field_mapping) for log_string in log_strings]
+        self.flow_logs = [FlowLog.from_list(log_string.split(), self.field_mapping) for log_string in log_strings]
 
     def get_flow_logs(self) -> List[FlowLog]:
         """
